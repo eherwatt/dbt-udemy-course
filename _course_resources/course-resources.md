@@ -680,6 +680,45 @@ SELECT * FROM {{ model }} WHERE {{ column_name }} <= 0
 {% endtest %}
 ```
 
+## Constraints
+
+* [The constraints documentation](https://docs.getdbt.com/reference/resource-properties/constraints)
+
+1) We've changed the materialization of `models/dim/dim_hosts_cleansed.sql` to `table`
+2) Here is the final code for the constraint-specific part of `models/schema.yml`:
+```
+
+  - name: dim_hosts_cleansed
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: host_id
+        data_type: integer
+        constraints:
+          - type: not_null
+        data_tests:
+          - unique
+      
+      - name: host_name
+        data_type: string
+        constraints:
+          - type: not_null
+      
+      - name: is_superhost
+        data_type: string
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['t', 'f']
+
+      - name: updated_at
+        data_type: timestamp
+
+      - name: created_at
+        data_type: timestamp
+```
+
 # Jinja, Macros and Packages
 ## Jinja
 
@@ -794,7 +833,7 @@ WHERE review_text is not null
 
 ## Documentation
 
-The `models/schema.yml` after adding the documentation:
+The documentation-specific pieces of `models/schema.yml` after adding the documentation:
 ```yaml
 
 models:
