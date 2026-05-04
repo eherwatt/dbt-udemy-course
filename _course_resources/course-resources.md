@@ -1034,6 +1034,24 @@ dbt --debug test --select dim_listings_w_hosts
 
 Keep in mind that in the lecture we didn't use the _--debug_ flag after all, as taking a look at the compiled SQL file is the better way of debugging tests.
 
+
+## Logging
+
+The contents of `macros/logging.sql`:
+```
+{% macro learn_logging() %}
+    {{ log("Call your mom!") }}
+    {{ log("Call your dad!", info=True) }} {# Logs to the screen, too #}
+--  {{ log("Call your dad!", info=True) }} {# This will be logged to the screen #}
+    {# log("Call your dad!", info=True) #} {# This won't be executed #}
+{% endmacro %}
+```
+
+Executing the macro:
+```
+dbt run-operation learn_logging
+```
+
 ## Debugging YAML, SQL, models and general dbt bugs
 
 ### Using `--empty` and `--sample`
@@ -1086,21 +1104,45 @@ _Watch out, the resulting table will be empty as we don't have data in `dim_list
 
 You can check the SQL that's been executed in `target/run/airbnb/models/dim/dim_listings_w_hosts.sql`
 
-## Logging
+## Tags and Selectors
 
-The contents of `macros/logging.sql`:
+We are adding tags to `dbt_project.yml`:
 ```
-{% macro learn_logging() %}
-    {{ log("Call your mom!") }}
-    {{ log("Call your dad!", info=True) }} {# Logs to the screen, too #}
---  {{ log("Call your dad!", info=True) }} {# This will be logged to the screen #}
-    {# log("Call your dad!", info=True) #} {# This won't be executed #}
-{% endmacro %}
+    fct:
+      +tags: ['fact']
 ```
 
-Executing the macro:
+And then also for the `models/mart/mart_fullmoon_reviews.sql`:
 ```
-dbt run-operation learn_logging
+{{ config(
+  materialized = 'table',
+  tags = ['fact']
+) }}
+```
+
+### Executing selectors
+Our `selector.yml` file:
+```
+selectors:
+  - name: dim_except_listings_w_hosts
+    description: Selects all dim models, excluding dim_listings_w_hosts.
+    definition:
+      union:
+        - method: path
+          value: models/dim
+        - exclude:
+            - method: fqn
+              value: dim_listings_w_hosts
+
+```
+
+And the selector commands:
+```
+# Before dbt v1.12:
+dbt run --selector dim_except_listings_w_hosts
+
+# Starting from dbt v1.12
+dbt run -s selector:dim_except_listings_w_hosts
 ```
 
 ## Variables
