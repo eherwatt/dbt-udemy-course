@@ -1145,6 +1145,41 @@ dbt run --selector dim_except_listings_w_hosts
 dbt run -s selector:dim_except_listings_w_hosts
 ```
 
+## Python Models
+The contents of `models/dim/dim_long_term_listings.py`:
+```python
+def model(dbt, session):
+    listings = dbt.ref("dim_listings_cleansed")
+
+    return (listings.filter(listings["MINIMUM_NIGHTS"] >= 30)
+                   .select("LISTING_ID", "LISTING_NAME", "PRICE"))
+```
+
+The contents of `models/dim/dim_fullmoon.py`:
+```python
+import holidays
+
+def is_holiday(date_col):
+    german_holidays = holidays.Germany()
+    is_holiday = (date_col in german_holidays)
+    return is_holiday
+
+def model(dbt, session):
+    dbt.config(
+        materialized = "table",
+        packages = ["holidays"]
+    )
+
+    orders_df = dbt.ref("seed_full_moon_dates")
+
+    df = orders_df.to_pandas()
+
+    df["IS_HOLIDAY"] = df["FULL_MOON_DATE"].apply(is_holiday)
+
+    # return final dataset (Pandas DataFrame)
+    return df
+```
+
 ## Variables
 The contents of `macros/variables.sql`:
 ```
