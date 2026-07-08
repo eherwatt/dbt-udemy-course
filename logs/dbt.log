@@ -1,0 +1,46 @@
+[0m16:25:31.912853 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a16f0e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b6dbd90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b6db610>]}
+
+
+============================== 16:25:31.915972 | c0baab1b-5907-43a3-b4e1-8ea52ddafb0b ==============================
+[0m16:25:31.915972 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:25:31.916291 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'static_parser': 'True', 'debug': 'False', 'printer_width': '80', 'log_format': 'default', 'invocation_command': 'dbt init', 'use_colors': 'True', 'version_check': 'True', 'write_json': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'log_cache_events': 'False', 'quiet': 'False', 'log_path': 'logs', 'empty': 'None', 'introspect': 'True', 'no_print': 'None', 'profiles_dir': '/Users/eherwatt/.dbt'}
+[0m16:25:31.955410 [info ] [MainThread]: Creating dbt configuration folder at /Users/eherwatt/.dbt
+[0m16:26:12.927865 [debug] [MainThread]: Starter project path: /Users/eherwatt/Documents/Learning/Analytics - Udemy Learning DBT/dbt-udemy-course/.venv/lib/python3.13/site-packages/dbt/include/starter_project
+[0m16:26:12.940110 [info ] [MainThread]: 
+Your new dbt project "airbnb" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:26:12.940479 [info ] [MainThread]: Setting up your profile.
+[0m16:26:24.325798 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m16:26:24.326263 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m16:26:24.326512 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m16:28:58.214457 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109e1f0e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b38fd90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b38f610>]}
+
+
+============================== 16:28:58.217787 | f9050459-09d2-41ef-a176-fadcd83f0e2c ==============================
+[0m16:28:58.217787 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:28:58.218104 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'target_path': 'None', 'no_print': 'None', 'empty': 'None', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'debug': 'False', 'introspect': 'True', 'write_json': 'True', 'invocation_command': 'dbt init', 'indirect_selection': 'eager', 'warn_error': 'None', 'log_path': 'logs', 'partial_parse': 'True', 'profiles_dir': '/Users/eherwatt/.dbt', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'quiet': 'False', 'log_format': 'default', 'version_check': 'True', 'fail_fast': 'False', 'static_parser': 'True', 'printer_width': '80', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True'}
+[0m16:29:37.431334 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10be5b0e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d3c3d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d3c3610>]}
+
+
+============================== 16:29:37.434555 | 31051c96-e5bb-4b92-b5be-2de3f0e2b552 ==============================
+[0m16:29:37.434555 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:29:37.434879 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'debug': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'use_experimental_parser': 'False', 'target_path': 'None', 'invocation_command': 'dbt init --skip-profile-setup airbnb', 'write_json': 'True', 'no_print': 'None', 'log_cache_events': 'False', 'fail_fast': 'False', 'empty': 'None', 'indirect_selection': 'eager', 'version_check': 'True', 'quiet': 'False', 'warn_error': 'None', 'printer_width': '80', 'profiles_dir': '/Users/eherwatt/.dbt', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs', 'static_parser': 'True', 'use_colors': 'True'}
+[0m16:29:37.444517 [info ] [MainThread]: A project called airbnb already exists here.
+[0m16:29:37.713386 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.32595703, "process_in_blocks": "0", "process_kernel_time": 0.165372, "process_mem_max_rss": "115523584", "process_out_blocks": "0", "process_user_time": 0.741963}
+[0m16:29:37.714732 [debug] [MainThread]: Command `dbt init` succeeded at 16:29:37.714397 after 0.33 seconds
+[0m16:29:37.717501 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d3fa190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d4e0290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d45c7c0>]}
+[0m16:29:37.718121 [debug] [MainThread]: Flushing usage events
+[0m16:29:38.182184 [debug] [MainThread]: An error was encountered while trying to flush usage events
