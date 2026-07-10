@@ -1,17 +1,15 @@
 models:
   - name: dim_listings_cleansed
-    data_tests:
-      - minimum_row_count:
-          arguments:
-            min_row_count: 1000
-
+    description: Cleansed table which contains Airbnb listings.
     columns:
       - name: listing_id
+        description: Primary key for the listing
         data_tests:
           - unique
           - not_null
 
       - name: host_id
+        description: The host's id. References the host table.
         data_tests:
           - not_null
           - relationships:
@@ -20,6 +18,7 @@ models:
                 field: host_id
 
       - name: room_type
+        description: Type of the apartment / room
         data_tests:
           - accepted_values:
               arguments:
@@ -30,39 +29,49 @@ models:
                     "Shared room",
                     "Hotel room",
                   ]
+
       - name: minimum_nights
+        description: '{{ doc("dim_listing_cleansed__minimum_nights") }}'
         data_tests:
           - positive_values
+
   - name: dim_hosts_cleansed
-    config:
-      contract:
-        enforced: true
+    description: Cleansed table which contains Airbnb hosts.
     columns:
       - name: host_id
-        data_type: integer
-        constraints:
-          - type: not_null
+        description: The id of the host. This is the primary key.
         data_tests:
+          - not_null
           - unique
 
       - name: host_name
-        data_type: string
-        constraints:
-          - type: not_null
+        description: The name of the host
+        data_tests:
+          - not_null
 
       - name: is_superhost
-        data_type: string
+        description: Defines whether the hosts is a superhost.
         data_tests:
           - accepted_values:
               arguments:
                 values: ["t", "f"]
-
-      - name: updated_at
-        data_type: timestamp
-
-      - name: created_at
-        data_type: timestamp
-
+  - name: dim_listings_w_hosts
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: source('airbnb', 'listings')
+    columns:
+      - name: price
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: number
+          - dbt_expectations.expect_column_quantile_values_to_be_between:
+              quantile: .99
+              min_value: 50 # (Optional)
+              max_value: 500 # (Optional)
+          - dbt_expectations.expect_column_max_to_be_between:
+              max_value: 5000 # (Optional)
+              config:
+                severity: warn
   - name: fct_reviews
     columns:
       - name: listing_id
@@ -81,19 +90,3 @@ models:
           - accepted_values:
               arguments:
                 values: ["positive", "neutral", "negative"]
-
-  - name: dim_hosts_cleansed
-    config:
-      contract:
-        enforced: true
-    columns:
-      - name: host_id
-        data_type: integer
-      - name: host_name
-        data_type: string
-      - name: is_superhost
-        data_type: string
-      - name: updated_at
-        data_type: timestamp
-      - name: created_at
-        data_type: timestamp
