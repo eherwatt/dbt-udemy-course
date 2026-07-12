@@ -25,6 +25,7 @@ SELECT
         10,
         2
     ) AS PRICE,
+    price_str,
     created_at,
     updated_at
 FROM
