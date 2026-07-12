@@ -16,10 +16,12 @@ Running the Airbnb dbt project locally
    ```bash
    . ./set-env.sh
    ```
-2. Change into the `airbnb` project and run dbt:
+2. Change into the `airbnb` project and run dbt with the local wrapper:
    ```bash
    cd airbnb
-   dbt run
+   ./dbt.sh run
    ```
+
+The repo now includes a root `profiles.yml` and a local wrapper script `airbnb/dbt.sh`, so you can run dbt from inside `airbnb` without manually passing `--profiles-dir`.
 
 The repo now includes a root `profiles.yml`, so `dbt` can load the profile automatically when `DBT_PROFILES_DIR` is set.
