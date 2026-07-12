@@ -1,10 +1,6 @@
-
-target/
-dbt_packages/
-logs/
-
 airbnb/profiles.yml
 airbnb/target*/
+logs/
 
 airbnb/package-lock.yml
 airbnb/dbt_packages/
@@ -16,5 +12,5 @@ airbnb/dbt_internal_packages/
 .user.yml
 .DS_Store
 
-set.env.sh
-set.env.ps1
+set-env.sh
+set-env.ps1
