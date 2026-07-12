@@ -9,3 +9,17 @@ Codespace setup:
 _Note: You don't need to create/activate a virtualenv in the Codespace. Everything has been set up for you._
 
 Have fun! :)  
+Running the Airbnb dbt project locally
+--------------------------------------
+
+1. Source the environment file from the repository root:
+   ```bash
+   . ./set-env.sh
+   ```
+2. Change into the `airbnb` project and run dbt:
+   ```bash
+   cd airbnb
+   dbt run
+   ```
+
+The repo now includes a root `profiles.yml`, so `dbt` can load the profile automatically when `DBT_PROFILES_DIR` is set.
