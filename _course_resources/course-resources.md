@@ -1435,7 +1435,7 @@ dbt build --target prod
 
 ## Environment Variables
 
-We are using this profile. Save it to the `airbnb/_prod_profiles` folder): [`airbnb/_prod_profiles/profiles.yml`](../airbnb/_prod_profiles/profiles.yml)
+We are using this profile. Save it to the repository root as `profiles.yml`: [`../profiles.yml`](../profiles.yml)
 
 Download the set-env files (both Windows and Mac) from https://dbtsetup.nordquant.com.
 
@@ -1458,7 +1458,7 @@ export DBT_ENV_NAME="MYDEV"
 
 Test it out (both platforms):
 ```
-dbt debug --profiles-dir _prod_profiles
+dbt debug --profiles-dir ..
 ```
 
 ## Working with Custom Schemas
@@ -1480,7 +1480,7 @@ We've added the a `schema` config to `models/mart/mart_fullmoon_reviews.sql`:
 
 Building for `prod` with the new profile (custom schema materialization test):
 ```
-dbt build --target prod --profiles-dir=_prod_profiles --empty
+dbt build --target prod --profiles-dir=.. --empty
 ```
 
 The custom schema behavior is defined in [`macros/generate_schema_name.sql`](../airbnb/macros/generate_schema_name.sql).
@@ -1491,7 +1491,7 @@ The schema cleanup behavior is defined in [`macros/drop_dev_schemas.sql`](../air
 
 Run this command to execute it:
 ```
-dbt run-operation drop_dev_schemas --profiles-dir _prod_profiles
+dbt run-operation drop_dev_schemas --profiles-dir ..
 ```
 
 ## Working with State
@@ -1500,35 +1500,35 @@ dbt run-operation drop_dev_schemas --profiles-dir _prod_profiles
 
 We introduced a syntax error in the `models/dim/dim_listings_cleansed.sql` model and then tried to build it with executing:
 ```
-dbt build --profiles-dir _prod_profiles
+dbt build --profiles-dir ..
 ```
 
 Once the error has been fixed, we resume dbt by:
 ```
-dbt retry --profiles-dir _prod_profiles
+dbt retry --profiles-dir ..
 ```
 
 ### Working with multiple states
 Compile state to production:
 ```
-dbt compile --profiles-dir _prod_profiles --target prod --target-path target-prod            
+dbt compile --profiles-dir .. --target prod --target-path target-prod            
 ```
 
 See what we've changed:
 ```
-dbt ls --profiles-dir _prod_profiles --target dev --state target-prod --select state:modified
+dbt ls --profiles-dir .. --target dev --state target-prod --select state:modified
 ```
 
 Then try to build the modified model:
 ```
-dbt run-operation drop_dev_schemas --profiles-dir _prod_profiles
-dbt run --profiles-dir _prod_profiles --target dev --state target-prod --select state:modified
+dbt run-operation drop_dev_schemas --profiles-dir ..
+dbt run --profiles-dir .. --target dev --state target-prod --select state:modified
 ```
 
 ### Deferring state
 ```
-dbt run-operation drop_dev_schemas --profiles-dir _prod_profiles
-dbt run --profiles-dir _prod_profiles --target dev --state target-prod --select state:modified --defer
+dbt run-operation drop_dev_schemas --profiles-dir ..
+dbt run --profiles-dir .. --target dev --state target-prod --select state:modified --defer
 ```
 
 ## Impementing Slim CI and Production Pipelines
