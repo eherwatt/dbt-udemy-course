@@ -1,0 +1,15 @@
+sources:
+  - name: airstats
+    schema: raw
+    tables:
+      - name: airports
+        identifier: airports
+        description: "This table contains information about airports, including their names, locations, and other relevant details. It serves as a reference for understanding the various airports in the dataset."
+
+      - name: comments
+        identifier: airport_comments
+        description: "This table contains comments about airports. It is used to provide additional context and information about the airports in the dataset."
+
+      - name: runways
+        identifier: runways
+        description: "This table contains information about the runways at various airports. It includes details such as runway length, surface type, and other relevant attributes."
