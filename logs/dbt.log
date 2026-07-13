@@ -44,3 +44,36 @@ Happy modeling!
 [0m16:29:37.717501 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d3fa190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d4e0290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d45c7c0>]}
 [0m16:29:37.718121 [debug] [MainThread]: Flushing usage events
 [0m16:29:38.182184 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:56:42.515257 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cb92ba0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e0df4d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e0df610>]}
+
+
+============================== 21:56:42.519507 | 1e451c25-42fe-438e-bb42-d9f9fa4bedd6 ==============================
+[0m21:56:42.519507 [info ] [MainThread]: Running with dbt=1.11.7
+[0m21:56:42.519830 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'empty': 'None', 'fail_fast': 'False', 'static_parser': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'invocation_command': 'dbt init', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'debug': 'False', 'profiles_dir': '/Users/eherwatt/Documents/Learning/Analytics - Udemy Learning DBT/dbt-udemy-course', 'version_check': 'True', 'printer_width': '80', 'no_print': 'None', 'write_json': 'True', 'introspect': 'True', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'log_format': 'default', 'log_cache_events': 'False', 'quiet': 'False', 'log_path': 'logs', 'use_colors': 'True'}
+[0m21:56:48.299631 [debug] [MainThread]: Starter project path: /Users/eherwatt/Documents/Learning/Analytics - Udemy Learning DBT/dbt-udemy-course/.venv/lib/python3.13/site-packages/dbt/include/starter_project
+[0m21:56:48.309510 [info ] [MainThread]: 
+Your new dbt project "airstats" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m21:56:48.309922 [info ] [MainThread]: Setting up your profile.
+[0m21:57:24.463050 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m21:57:24.463551 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m21:57:24.463707 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m22:00:09.000534 [info ] [MainThread]: Profile airstats written to /Users/eherwatt/Documents/Learning/Analytics - Udemy Learning DBT/dbt-udemy-course/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m22:00:09.274409 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 206.80995, "process_in_blocks": "0", "process_kernel_time": 0.307248, "process_mem_max_rss": "144621568", "process_out_blocks": "0", "process_user_time": 0.986076}
+[0m22:00:09.278999 [debug] [MainThread]: Command `dbt init` succeeded at 22:00:09.278518 after 206.82 seconds
+[0m22:00:09.280603 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f231220>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f1c3770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d13a250>]}
+[0m22:00:09.281535 [debug] [MainThread]: Flushing usage events
+[0m22:00:09.746907 [debug] [MainThread]: An error was encountered while trying to flush usage events
